@@ -11,15 +11,12 @@ public class Main {
     //    Шаг 3: Если ключевой элемент найден, верните позицию индекса элемента массива.
     //    Шаг 4: Если ключевой элемент не найден, верните -1
     public static int indexOf(int arr[], int x) {
-
-        int index = -1;
-
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == x) {
-                index = i;
+                return i;
             }
         }
-        return index;
+        return -1;
     }
     // todo:
     //    2. Find the element that appears once in a sorted array
@@ -34,16 +31,18 @@ public class Main {
     //    Шаг 5: Исправить ошибку ArrayIndexOutOfBoundsException
 
     public static int findElement(int arr[]) {
+        int l = arr.length;
 
-        int element = -1;
+        if (l == 1) return arr[0];
 
-        for (int i = 0; i < arr.length - 1; i += 2) {
+        if (arr[l-2] != arr[l-1]) return arr[l-1];
+
+        for (int i = 0; i < l - 1; i += 2) {
             if (arr[i] != arr[i + 1]) {
-                element = arr[i];
-                i--;
+                return arr[i];
             }
         }
-        return element;
+        return -1;
     }
 
     // вывод результатов
@@ -54,9 +53,13 @@ public class Main {
 
         //Задача 2
         int[] arr1 = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 10}; //массив с незадублированным элементом
-        int[] arr2 = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10}; //массив только с задублированными элементами
+        int[] arr2 = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10}; //массив с незадублированным последним элементом
+        int[] arr3 = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10}; //массив только с задублированными элементами
+        int[] arr4 = new int[]{1}; //массив с 1 элементом
         System.out.println(findElement(arr1)); // результат -> 7
-        System.out.println(findElement(arr2)); // результат -> -1
+        System.out.println(findElement(arr2)); // результат -> 10
+        System.out.println(findElement(arr3)); // результат -> -1
+        System.out.println(findElement(arr4)); // результат -> 1
 
     }
 
