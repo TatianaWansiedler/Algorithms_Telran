@@ -105,7 +105,7 @@ let arr = [1, 1, 2, 2, 2, 2, 3]
 function leftIndex(arr, x) {
     let left = 0;
     let right = arr.length - 1;
-    let res;
+    let res = -1;
 
     while (left <= right) {
         let mid = Math.round((left + right) / 2)
@@ -126,7 +126,7 @@ function leftIndex(arr, x) {
 function rightIndex(arr, x) {
     let left = 0;
     let right = arr.length - 1;
-    let res;
+    let res = -2;
 
     while (left <= right) {
         let mid = Math.round((left + right) / 2)
@@ -148,9 +148,7 @@ function countElem(arr, x) {
     const right = rightIndex(arr, x);
     const left = leftIndex(arr, x);
 
-    const res = right - left + 1;
-
-    return isNaN(res) ? 0 : res
+    return right - left + 1;
 }
 
 // проверка
